@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Machine Sound Analyzer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🔊 Machine Sound Analyzer</h1>
+    <p>Upload a machine sound file (.wav, .mp3) and get analysis results.</p>
+
+    <!-- File Upload -->
+    <input type="file" id="audioFile" accept="audio/*">
+
+    <!-- Upload Button -->
+    <button onclick="analyzeSound()">Analyze</button>
+
+    <!-- Result Section -->
+    <div id="result"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
