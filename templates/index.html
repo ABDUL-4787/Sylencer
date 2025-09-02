@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoundPredict - Machine Health Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-wave-square"></i>
+                    <span>SoundPredict</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#" onclick="showSection('uploadSection')">Analyze</a></li>
+                    <li><a href="#" onclick="showSection('resultsSection')">Results</a></li>
+                    <li><a href="/logout">Logout ({{ username }})</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content container">
+        <!-- Upload Section -->
+        <div id="uploadSection" class="section active">
+            <div class="upload-section">
+                <h2>Upload Machine Sound for Analysis</h2>
+                <div class="upload-area" id="dropZone">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag and drop your audio file here or click to browse</p>
+                    <input type="file" id="audioFile" accept="audio/*" style="display: none;">
+                </div>
+                <button class="btn btn-primary" onclick="analyzeSound()">Analyze Sound</button>
+                <div id="uploadStatus"></div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="resultsSection" class="section">
+            <div class="results">
+                <h2>Analysis Results</h2>
+                <div id="resultContainer">
+                    <!-- Results will be displayed here -->
+                </div>
+                <button class="btn btn-primary" onclick="showSection('uploadSection')">Analyze Another Sound</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2023 SoundPredict. All rights reserved.</p>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
