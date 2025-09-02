@@ -6,12 +6,15 @@ import numpy as np
 import librosa
 import soundfile as sf
 
-app = Flask(__name__, static_folder='../static', template_folder='../templates')
+# Resolve project-relative directories so Flask can find templates/static/uploads
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+app = Flask(__name__, static_folder=os.path.join(BASE_DIR, 'static'), template_folder=os.path.join(BASE_DIR, 'templates'))
 app.secret_key = 'your_secret_key_change_in_production'
-app.config['UPLOAD_FOLDER'] = '../uploads/'
+# Use an absolute path for uploads to avoid relative-path issues when running from other CWDs
+app.config['UPLOAD_FOLDER'] = os.path.join(BASE_DIR, 'uploads')
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
 
-# Create upload directory if it doesn't exist
+# Create upload directory if it doesn't exist (use the resolved absolute path)
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 # Allowed audio extensions
